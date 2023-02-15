@@ -1,0 +1,5 @@
+CKVS Header type       : CS212 CryptKVS v1
+CKVS Header version    : 1
+CKVS Header table_size : 64
+CKVS Header threshold  : 12
+CKVS Header num_entries: 0

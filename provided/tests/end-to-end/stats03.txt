@@ -1,0 +1,13 @@
+CKVS Header type       : CS212 CryptKVS v1
+CKVS Header version    : 1
+CKVS Header table_size : 64
+CKVS Header threshold  : 19
+CKVS Header num_entries: 2
+    Key   : entry1
+    Value : off 0 len 0
+    Auth  : 78fe2a8400719a190aa3cc00db11d573674b80ac2a822ec6969a59b3e76b68c4
+    C2    : 0000000000000000000000000000000000000000000000000000000000000000
+    Key   : entry2
+    Value : off 7328 len 32
+    Auth  : 58ad5483c48c8f6c30852687c08dbae20974dd1a4b2f2755a67f44a062e2928f
+    C2    : 17dc233b35fe84d0fdcb93eb3570a6872052be3c15f91c0413d81ae3f2966e23

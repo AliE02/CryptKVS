@@ -1,0 +1,25 @@
+CKVS Header type       : CS212 CryptKVS v1
+CKVS Header version    : 1
+CKVS Header table_size : 64
+CKVS Header threshold  : 16
+CKVS Header num_entries: 5
+    Key   : thekey
+    Value : off 9760 len 800
+    Auth  : 23dd03927923da49ec205831d18b5fcb90aaa08d11646e9044eb18064c4ce0ac
+    C2    : [0-9a-f]{64}(?!d99fb850e5a1a9ac0c85b53499a57a7b5ca83c075baac3e21023fb24560abf74)
+    Key   : de beauvoir
+    Value : off 7712 len 1136
+    Auth  : 06bf988ffaec043094c6d5c242ce89e9fa3823d9310f068b58f1c3918e4426c7
+    C2    : 63dbefbb238aef7a90753898b95d3f6ddb94f057f0906cd674307b0ef7ed800d
+    Key   : shakespeare
+    Value : off 7216 len 464
+    Auth  : ab380c3d706e2b94eb0a7b6184bf62939a647ba6f013c8798f1035feac1b768f
+    C2    : be95447bd4d6db38a926d1cee1552c1b2a669444d99f1883f73d2564a4b34e1b
+    Key   : verylongverylongverylongverylong
+    Value : off 7680 len 16
+    Auth  : 9c3315bc1a0ccd2f958d161e9ae1e2270acc61264f6e87adf8a66007f1822705
+    C2    : 96ee6aca7efdbd7a149197859bf33d69c23cd8c48605f54d681cbd96f1e392af
+    Key   : proust
+    Value : off 8848 len 912
+    Auth  : 10d2c75fe298fd7b783d31982ecf0dcc7e4aa485f3b232557b36941ceeb35a10
+    C2    : bba0c506e3997949e517eb1a332a37fe1bd75281d5de861505810162031b62a3

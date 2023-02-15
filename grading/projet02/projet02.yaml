@@ -1,0 +1,123 @@
+- ckvs_io.h:  4   # max 4, 
+- ckvs_io.c: # NE PAS REMPLIR CETTE LIGNE
+  - ckvs_write_entry_to_disk: # NE PAS REMPLIR CETTE LIGNE
+      offset:  2                    # max 2, 
+      fseek:  2                     # max 2, 
+      fwrite:  2                    # max 2, 
+      gestions des erreurs:   2     # max 2, 
+  - count_one_bits: # NE PAS REMPLIR CETTE LIGNE
+      modularisation:  2      # max 2, 
+      corps:   5              # max 5,
+  - ckvs_open: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:   1              # max 1, 
+      open + test erreur:  2            # max 2, 
+      read header + test erreur:   2    # max 2, 
+      check header + test erreur: 5     # max 5, 
+      allocation dyn. des entries + test erreur:  10      # max 10, 
+      read entries + test erreur: 2     # max 2, 
+  - ckvs_close:  2.5                    # max 2.5, 
+  - free dans ckvs_close:  5          # max 5, conseil: free(NULL) ne fait rien (c'est dans le standard)
+  - ckvs_hashkey():      10            # max 11, strlen(key) dangereux car non null-terminated
+  - ckvs_find_entry: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:   1.5              # max 1.5, 
+      boucle:  1                        # max 1, 
+      boucle hash:  7                  # max 7, 
+      key:  3                           # max 3, 
+      SHA: 3                            # max 3, 
+      retours: 3                        # max 3, 
+  - ckvs_write_encrypted_value: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:    1.5                # max 1.5, 
+      fseek + test erreur:   2             # max 2, 
+      offset:     2                        # max 2, 
+      fwrite content + test erreur:  2     # max 2, 
+      set + write entry:  3                # max 3, 
+  - read_value_file_content: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments: 1.5                # max 1.5, 
+      open + test erreur:   2           # max 2, 
+      file size + test erreur: 3        # max 3, 
+      lecture de la valeur:  12          # max 12, 
+      close:  1                         # max 1, 
+- ckvs_utils.c: # NE PAS REMPLIR CETTE LIGNE
+  - hex_encode: 3               # max 3, 
+  - SHA256_to_string:  1        # max 1, 
+  - ckvs_cmp_sha:  2            # max 2, 
+  - print_X: # NE PAS REMPLIR CETTE LIGNE
+      print_SHA:  4.5           # max 5, Préfix peut être NULL
+      print_header: 2         # max 2,
+      print_entry:  2         # max 2, 
+- ckvs_crypto.c: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:  1.5             # max 1.5, 
+      concaténation:   9              # max 10, strlen(key) au lieu de strnlen(key, MAX)
+      alloc dyn concat:  6            # max 8, Mauvaise taille du buffer, une allocation dynamique peut avoir une taille dynamique
+      SHA:    2                       # max 2, 
+      HMAC key:   3                   # max 3, 
+      HMAC C1:   3                    # max 3, 
+      modularisation: 2               # max 2, 
+- ckvs_local.c: # NE PAS REMPLIR CETTE LIGNE
+  - ckvs_local_stats: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:  0.5             # max 0.5, 
+      open + test erreur: 2           # max 2, 
+      print header:  1                # max 1, 
+      print valid entries:  4         # max 4, 
+      close:    1                     # max 1, 
+  - ckvs_local_getset: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments: 1.5                    # max 1.5, 
+      open + test erreur:    2              # max 2, 
+      encrypt + test erreur:  3             # max 3, 
+      find entry + test erreur:  3          # max 3, 
+      generate C2 + test erreur: 3          # max 3, 
+      compute masterkey + test erreur:  3   # max 3, 
+  - do_get: # NE PAS REMPLIR CETTE LIGNE
+      alloc dyn secret:    7          # max 7, 
+      alloc dyn encrypt:   7          # max 7, 
+      read encrypted value:  4        # max 4, 
+      decrypt:  3                     # max 3, 
+      print: 1                        # max 1, 
+      close:  1                       # max 1, 
+  - do_set: # NE PAS REMPLIR CETTE LIGNE
+      alloc dyn decrypt:  7           # max 7, 
+      encrypt: 4                      # max 4, 
+      write: 1.5                       # max 1.5, 
+      close:  1                       # max 1,
+  - ckvs_local_get:  2            # max 2, 
+  - ckvs_local_set: # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:  2              # max 2, 
+      read value + test erreur:  2     # max 2,
+      call + free:   3                 # max 3, 
+- cryptkvs.c: # NE PAS REMPLIR CETTE LIGNE
+  - help/usage: 1             # max 1, 
+  - ckvs_do_one_cmd: # NE PAS REMPLIR CETTE LIGNE
+      argc check: 1           # max 1,
+      stat:  1                # max 1,
+      get:   3                # max 3,
+      set:   3                # max 3,
+- ckvs_new_entry(): # NE PAS REMPLIR CETTE LIGNE
+      tests arguments:   2              # max 2, 
+      test num_entries:  2              # max 2, > plus robuste
+      recherche:  5                     # max 5, Soyez plus explicite quand vous changez le comportement d'une fonction donnée (j'ai passé pas mal de temps à comprendre avant de lire find_new_entry)
+      test longueur clé: 1              # max 2, Truncate au lieu de renvoi erreur
+      init new entry:   5               # max 5, 
+      mise à jour header:   5           # max 5, 
+      écriture entry:   3               # max 3, 
+      valeur retour (set e_out): 2      # max 2, 
+- ckvs_local_new(): # NE PAS REMPLIR CETTE LIGNE
+      argc/argv:   3                    # max 3, 
+      tests arguments:      1.5           # max 1.5, 
+      encrypt pwd + test erreur: 3      # max 3, 
+      open + test erreur:      2        # max 2, 
+      appel à new_entry:       2        # max 2, 
+      close:                   1        # max 1, 
+- unification des commandes: # NE PAS REMPLIR CETTE LIGNE
+  - cryptkvs.c: # NE PAS REMPLIR CETTE LIGNE
+      type ckvs_command_t:  2                    # max 2, 
+      type ckvs_command_mapping: 3               # max 3, 
+      tableau des commandes:     5.5               # max 6, NB_COMMAND à mettre en const static pour éviter plusieurs recalculs
+      révision usage() (boucle):   2             # max 2, 
+      révision ckvs_do_one_cmd():   9.5            # max 9.5, 
+  - modification prototypes ckvs_local.h:  2     # max 2, 
+  - ckvs_local.c: # NE PAS REMPLIR CETTE LIGNE
+      check argc stats:      1                        # max 1, 
+      argc/argv  get:        3                        # max 3, 
+      argc/argv  set:        3                        # max 3, 
+- style:  1         # max 2, min -2, (normal = 0), Code assez propre
+- bonus/malus: 2    # max 5, min -5, (normal = 0), Bons commentaires, bonnes macros

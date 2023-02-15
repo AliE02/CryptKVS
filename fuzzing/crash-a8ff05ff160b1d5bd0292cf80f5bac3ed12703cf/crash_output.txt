@@ -1,0 +1,65 @@
+/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/dedup-crashes/crash-a8ff05ff160b1d5bd0292cf80f5bac3ed12703cf
+=================================================================
+==10817==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61c000000f80 at pc 0x7f89c43d0646 bp 0x7fffc4a830a0 sp 0x7fffc4a82868
+READ of size 113 at 0x61c000000f80 thread T0
+    #0 0x7f89c43d0645 in strlen (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x7d645) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #1 0x7f89c448459a in ckvs_find_entry /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/ckvs_io.c:127:108
+    #2 0x7f89c44885d5 in ckvs_new_entry /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/ckvs_io.c:288:8
+    #3 0x7f89c448e484 in ckvs_local_new /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/ckvs_local.c:282:11
+    #4 0x7f89c448165a in ckvs_do_one_cmd /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/cryptkvs.c:60:28
+    #5 0x7f89c447eb79 in LLVMFuzzerTestOneInput /mnt/d/Programming/POS/pps22-dev/resources/cs212-2022/fuzz-target.c:59:13
+    #6 0x7f89c43a0ed3 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x4ded3) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #7 0x7f89c438b29f in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x3829f) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #8 0x7f89c4390fa6 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x3dfa6) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #9 0x7f89c43ba5c2 in main (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x675c2) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #10 0x7f89c3934082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+    #11 0x7f89c4385a8d in _start (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x32a8d) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+
+DEDUP_TOKEN: strlen--ckvs_find_entry--ckvs_new_entry--ckvs_local_new--ckvs_do_one_cmd--LLVMFuzzerTestOneInput--fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long)--fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)--fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long))--main--__libc_start_main--_start
+0x61c000000f80 is located 0 bytes to the right of 1792-byte region [0x61c000000880,0x61c000000f80)
+allocated by thread T0 here:
+    #0 0x7f89c443ce08 in __interceptor_calloc (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0xe9e08) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #1 0x7f89c4482e44 in ckvs_open /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/ckvs_io.c:93:21
+    #2 0x7f89c448e376 in ckvs_local_new /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/ckvs_local.c:270:15
+    #3 0x7f89c448165a in ckvs_do_one_cmd /mnt/d/Programming/POS/pps22-dev/projects-rendu02/group_6444b7/./done/cryptkvs.c:60:28
+    #4 0x7f89c447eb79 in LLVMFuzzerTestOneInput /mnt/d/Programming/POS/pps22-dev/resources/cs212-2022/fuzz-target.c:59:13
+    #5 0x7f89c43a0ed3 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x4ded3) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #6 0x7f89c438b29f in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x3829f) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #7 0x7f89c4390fa6 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x3dfa6) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #8 0x7f89c43ba5c2 in main (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x675c2) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37)
+    #9 0x7f89c3934082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082) (BuildId: 1878e6b475720c7c51969e69ab2d276fae6d1dee)
+
+DEDUP_TOKEN: __interceptor_calloc--ckvs_open--ckvs_local_new--ckvs_do_one_cmd--LLVMFuzzerTestOneInput--fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long)--fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)--fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long))--main--__libc_start_main
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/mnt/d/Programming/POS/pps22-dev/working-rendu02-1M/build/group_6444b7/fuzz-target+0x7d645) (BuildId: 40dfa8de648fdd0a8e18efd7b7c0df64967ccf37) in strlen
+Shadow bytes around the buggy address:
+  0x0c387fff81a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c387fff81b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c387fff81c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c387fff81d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c387fff81e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c387fff81f0:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c387fff8200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c387fff8210: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c387fff8220: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c387fff8230: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c387fff8240: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==10817==ABORTING
